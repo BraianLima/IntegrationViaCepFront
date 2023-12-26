@@ -4,6 +4,13 @@
   "newProjectRoot": "projects",
   "projects": {
     "integration-via-cep": {
+      "i18n": {
+        "sourceLocale": "en",
+        "locales": { 
+          "pt": "src/assets/locale/i18n/pt.json",
+          "es": "src/assets/locale/i18n/es.json"
+        }
+      },
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -106,5 +113,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "0d5c4e5c-15a1-4a1b-b733-0e3887ff5098"
   }
 }
