@@ -17,7 +17,7 @@ export class LanguageService {
     @Inject(DOCUMENT) private document: Document){ }
 
   public setUseLanguage(language: string): void {
-    this.browserLanguage = this.getLanguageByParameter(language);
+    this.browserLanguage = this.getLanguage(language);
     this.translateService.setDefaultLang(this.browserLanguage);
     this.translateService.use(this.browserLanguage);
     this.setHtmlLangAttribute();
@@ -26,7 +26,7 @@ export class LanguageService {
     }
   }
   
-  private getLanguageByParameter(language: string): string {
+  private getLanguage(language: string): string {
     if (isNullOrEmpty(language)) {
       return this.getBrowserLanguage();
     }
@@ -46,17 +46,6 @@ export class LanguageService {
     return browserLanguage;
   }
 
-  private setCookieLanguage(browserLanguage: string): void {
-    const expirationDate = new Date();
-    expirationDate.setTime(expirationDate.getTime() + this.cookieExpirationHours * 60 * 60 * 1000);
-    this.cookieService.set(this.cookieName, browserLanguage, expirationDate, '/');
-  }
-
-  private existsLanguageCookie(): boolean {
-    const storedLanguage = this.cookieService.get(this.cookieName);
-    return !isNullOrEmpty(storedLanguage);
-  }
-
   private deleteCookie(cookieName: string): void {
     this.cookieService.delete(cookieName, '/');
   }
@@ -67,5 +56,15 @@ export class LanguageService {
     renderer.setAttribute(htmlElement, 'lang', this.browserLanguage);
   }
 
+  private existsLanguageCookie(): boolean {
+    const storedLanguage = this.cookieService.get(this.cookieName);
+    return !isNullOrEmpty(storedLanguage);
+  }
+
+  private setCookieLanguage(browserLanguage: string): void {
+    const expirationDate = new Date();
+    expirationDate.setTime(expirationDate.getTime() + this.cookieExpirationHours * 60 * 60 * 1000);
+    this.cookieService.set(this.cookieName, browserLanguage, expirationDate, '/');
+  }
 }
   
