@@ -16,8 +16,8 @@ export class LanguageService {
     private cookieService: CookieService,
     @Inject(DOCUMENT) private document: Document){ }
 
-  public setUseLanguage() {
-    this.browserLanguage = this.getBrowserLanguage();
+  public setUseLanguage(language: string): void {
+    this.browserLanguage = this.getLanguageByParameter(language);
     this.translateService.setDefaultLang(this.browserLanguage);
     this.translateService.use(this.browserLanguage);
     this.setHtmlLangAttribute();
@@ -26,6 +26,15 @@ export class LanguageService {
     }
   }
   
+  private getLanguageByParameter(language: string): string {
+    if (isNullOrEmpty(language)) {
+      return this.getBrowserLanguage();
+    }
+
+    this.deleteCookie(this.cookieName);
+    return language;
+  }
+
   private getBrowserLanguage(): string {
     const storedLanguage = this.cookieService.get(this.cookieName);
     if (!isNullOrEmpty(storedLanguage)){
@@ -37,7 +46,7 @@ export class LanguageService {
     return browserLanguage;
   }
 
-  private setCookieLanguage(browserLanguage: string) {
+  private setCookieLanguage(browserLanguage: string): void {
     const expirationDate = new Date();
     expirationDate.setTime(expirationDate.getTime() + this.cookieExpirationHours * 60 * 60 * 1000);
     this.cookieService.set(this.cookieName, browserLanguage, expirationDate, '/');
@@ -48,7 +57,11 @@ export class LanguageService {
     return !isNullOrEmpty(storedLanguage);
   }
 
-  private setHtmlLangAttribute() {
+  private deleteCookie(cookieName: string): void {
+    this.cookieService.delete(cookieName, '/');
+  }
+
+  private setHtmlLangAttribute(): void {
     const renderer = this.rendererFactory.createRenderer(null, null);
     const htmlElement = this.document.documentElement;
     renderer.setAttribute(htmlElement, 'lang', this.browserLanguage);

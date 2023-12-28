@@ -8,6 +8,6 @@ import { LanguageService } from './services/language.service';
 })
 export class AppComponent {
   constructor (private languageService: LanguageService){
-    this.languageService.setUseLanguage();
+    this.languageService.setUseLanguage('');
   }
 }

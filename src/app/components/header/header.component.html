@@ -14,17 +14,10 @@
     </span>
     <div class="me-0 m-auto">
         <div class="d-flex flex-row">
-            <a href="index.html" class="mx-1">
-                <img src="../../../assets/flags/brazil.ico" class="flag-ico" 
-                    alt="{{ 'brazil' | translate }}" title="{{ 'brazil' | translate }}" />
-            </a>
-            <a href="index.html" class="mx-1">
-                <img src="../../../assets/flags/spain.ico" class="flag-ico" 
-                    alt="{{ 'spain' | translate }}" title="{{ 'spain' | translate }}" />
-            </a>
-            <a href="index.html" class="mx-1">
-                <img src="../../../assets/flags/united-states.ico" class="flag-ico" 
-                    alt="{{ 'united_states' | translate }}" title="{{ 'united_states' | translate }}" />
+            <a (click)="changeLanguage($event, flag.flagLanguageCode)" class="mx-1" *ngFor="let flag of flags">
+                <img src="../../../assets/flags/{{ flag.flagIco }}" class="flag-ico" 
+                    alt="{{ flag.flagTranslateName | translate }}" 
+                    title="{{ flag.flagTranslateName | translate }}" />
             </a>
         </div>
     </div>
