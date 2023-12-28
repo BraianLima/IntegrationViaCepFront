@@ -10,3 +10,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .v-middle {
     vertical-align: middle;
 }
+
+.standard-gradient {
+    background: linear-gradient(0deg, rgba(127, 255, 100, 0.5) 0%, rgba(127, 255, 140, 1) 100%) !important;
+}
