@@ -1,0 +1,17 @@
+.border-custom {
+    border: 1px solid darkgrey;
+    border-radius: 20px;
+}
+
+.border-y {
+    border-right: 1px solid darkgrey;
+}
+
+.font-size-18 {
+    font-size: 18px;
+}
+
+.fade-in {
+    opacity: 0;
+    transition: opacity 1s ease;
+}

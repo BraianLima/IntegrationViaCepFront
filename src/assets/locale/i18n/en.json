@@ -5,5 +5,9 @@
     "brazil": "Brazil",
     "spain": "Spain",
     "united_states": "United States",
-    "braian_link": "Braian's Linkedin, the creator of this website"
+    "braian_link": "Braian's Linkedin, the creator of this website",
+    "text_call_get_postal_code": "Do you know the postal code?",
+    "get_address": "Get the address",
+    "text_call_search_postal_code": "Do you don't know the postal code?",
+    "button_search_postal_code": "Search the postal code using address"
 }

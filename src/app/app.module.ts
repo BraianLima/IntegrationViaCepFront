@@ -12,6 +12,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { provideHttpClient, withFetch } from '@angular/common/http';
+import { ContentComponent } from './components/content/content.component';
 
 
 export function HttpLoaderFactory (http: HttpClient){
@@ -22,7 +23,8 @@ export function HttpLoaderFactory (http: HttpClient){
   declarations: [
     AppComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    ContentComponent
   ],
   imports: [
     BrowserModule,
