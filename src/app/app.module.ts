@@ -13,6 +13,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { ContentComponent } from './components/content/content.component';
+import { CepOutputComponent } from './components/content/cep-output/cep-output.component';
 
 export function HttpLoaderFactory (http: HttpClient){
   return new TranslateHttpLoader(http, './assets/locale/i18n/', '.json');
@@ -23,7 +24,8 @@ export function HttpLoaderFactory (http: HttpClient){
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    ContentComponent
+    ContentComponent,
+    CepOutputComponent
   ],
   imports: [
     BrowserModule,
