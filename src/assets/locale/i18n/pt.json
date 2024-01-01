@@ -24,5 +24,6 @@
     "ibge_placeholder": "9999999",
     "gia_placeholder": "9999",
     "ddd_placeholder": "99",
-    "siafi_placeholder": "9999"
+    "siafi_placeholder": "9999",
+    "state_placeholder": "SP"
 }

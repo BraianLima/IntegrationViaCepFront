@@ -26,26 +26,66 @@
                 {{ "none_option_chosen" | translate }}
             </h1>
         </div>
+        
         <div class="get-postal-code row fade-in" *ngIf="isBlockGetPostalCode">
-            <div class="input-group mb-3 mt-3">
-                <p class="mb-0">
-                    <b>CEP</b>
-                </p>
-                <div class="input-group input-group-sm">
-                    <input type="text" placeholder="99999-999" class="form-control">
-                    <div class="input-group-append">
-                        <button type="button" class="btn btn-info border-0">
-                            <i class="material-icons v-middle">search</i>
-                            {{ "get_address" | translate }}
-                        </button>
+            <div class="row mb-3 mt-3 mx-0 p-0">
+                <div class="col-12">
+                    <div class="input-group">
+                        <p class="mb-0">
+                            <b>CEP</b>
+                        </p>
+                        <div class="input-group input-group-sm">
+                            <input type="text" placeholder="99999-999" class="form-control">
+                            <div class="input-group-append">
+                                <button type="button" class="btn btn-info border-0">
+                                    <i class="material-icons v-middle">search</i>
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
             <app-cep-output></app-cep-output>
         </div>
-        <div class="search-postal-code row fade-in"  *ngIf="isBlockSearchPostalCode">
-            <h1>Obter endereço</h1>
 
+        <div class="search-postal-code row fade-in"  *ngIf="isBlockSearchPostalCode">
+            <div class="row mb-3 mt-3 mx-0 p-0">
+                <div class="col-12 col-md-6">
+                    <div class="input-group mb-3">
+                        <p class="mb-0">
+                            <b>{{ "state" | translate }}</b>
+                        </p>
+                        <div class="input-group">
+                            <input type="text" placeholder="{{ 'state_placeholder' | translate }}" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <div class="input-group mb-3">
+                        <p class="mb-0">
+                            <b>{{ "county" | translate }}</b>
+                        </p>
+                        <div class="input-group">
+                            <input type="text" placeholder="{{ 'county' | translate }}" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="input-group">
+                        <p class="mb-0">
+                            <b>{{ "public_place" | translate }}</b>
+                        </p>
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="{{ 'public_place' | translate }}" />
+                            <div class="input-group-append">
+                                <button type="button" class="btn btn-info border-0">
+                                    <i class="material-icons v-middle">search</i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <app-cep-output></app-cep-output>
         </div>
 
