@@ -19,5 +19,10 @@
     "ibge": "IBGE",
     "gia": "GIA",
     "ddd": "DDD",
-    "siafi": "SIAFI"
+    "siafi": "SIAFI",
+    "street_placeholder": "Rua Teste do Teste",
+    "ibge_placeholder": "9999999",
+    "gia_placeholder": "9999",
+    "ddd_placeholder": "99",
+    "siafi_placeholder": "9999"
 }
