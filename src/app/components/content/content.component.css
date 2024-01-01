@@ -13,5 +13,13 @@
 
 .fade-in {
     opacity: 0;
-    transition: opacity 1s ease;
+    transition: opacity 1s ease-in-out;
+}
+
+.visible {
+    opacity: 1;
+}
+
+.font-size-35 {
+    font-size: 35px !important;
 }

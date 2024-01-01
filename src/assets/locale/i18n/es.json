@@ -6,8 +6,18 @@
     "spain": "España",
     "united_states": "Estados Unidos",
     "braian_link": "Linkedin de Braian, el creador de esta web",
-    "text_call_get_postal_code": "¿Sabes el código postal?",
+    "text_call_get_postal_code": "¿Sabes el CEP?",
     "get_address": "Obtener la dirección",
-    "text_call_search_postal_code": "¿No sabes el código postal?",
-    "button_search_postal_code": "Buscar código postal usando la dirección"
+    "text_call_search_postal_code": "¿No sabes el CEP?",
+    "button_search_postal_code": "Buscar CEP usando la dirección",
+    "none_option_chosen": "Ninguna opción elegida",
+    "public_place": "Lugar público",
+    "complement": "Complementar",
+    "district": "Vecindario",
+    "county": "Localidad",
+    "state": "Estado",
+    "ibge": "IBGE",
+    "gia": "GIA",
+    "ddd": "DDD",
+    "siafi": "SIAFI"
 }

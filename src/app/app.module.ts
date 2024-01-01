@@ -14,7 +14,6 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { ContentComponent } from './components/content/content.component';
 
-
 export function HttpLoaderFactory (http: HttpClient){
   return new TranslateHttpLoader(http, './assets/locale/i18n/', '.json');
 }
