@@ -3,6 +3,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { DOCUMENT } from '@angular/common';
 import { CookieService } from 'ngx-cookie-service';
 import { isNullOrEmpty } from '../utils/string-utils';
+import { map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +27,7 @@ export class LanguageService {
     }
   }
   
-  private getLanguage(language: string): string {
+  public getLanguage(language: string): string {
     if (isNullOrEmpty(language)) {
       return this.getBrowserLanguage();
     }
@@ -66,5 +67,18 @@ export class LanguageService {
     expirationDate.setTime(expirationDate.getTime() + this.cookieExpirationHours * 60 * 60 * 1000);
     this.cookieService.set(this.cookieName, browserLanguage, expirationDate, '/');
   }
+
+  // public getTranslateMessagesI18n(propToTranslate: string): string {
+  //   const translatedMessage = this.translateService.get(propToTranslate);
+  //   console.log(translatedMessage);
+  //   let propToReturn: string = '';
+  //   translatedMessage.pipe(map((propTranslated: string) => {
+  //     console.log('aqui')
+  //     propToReturn = propTranslated;
+  //   }));
+
+  //   return propToReturn;
+  // }
+
 }
   

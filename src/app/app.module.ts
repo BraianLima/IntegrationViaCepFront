@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,8 +15,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { ContentComponent } from './components/content/content.component';
 import { CepOutputComponent } from './components/content/cep-output/cep-output.component';
+import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 
-export function HttpLoaderFactory (http: HttpClient){
+export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/locale/i18n/', '.json');
 }
 
@@ -29,8 +31,10 @@ export function HttpLoaderFactory (http: HttpClient){
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     HttpClientModule,
+    NgxMaskDirective,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -43,7 +47,8 @@ export function HttpLoaderFactory (http: HttpClient){
   ],
   providers: [
     provideClientHydration(),
-    provideHttpClient(withFetch())
+    provideHttpClient(withFetch()),
+    provideNgxMask()
   ],
   bootstrap: [AppComponent]
 })

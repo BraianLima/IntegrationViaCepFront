@@ -5,14 +5,18 @@
                 <div class="form-group mb-3 text-center">
                     <p class="mt-3 font-size-18">{{ "text_call_get_postal_code" | translate }}</p>
                     <button type="button" class="btn btn-success is-filled"
-                        (click)="toggleVisibility('get-postal-code')">{{ "get_address" | translate }}</button>
+                        (click)="toggleVisibility('get-postal-code')">
+                            {{ "get_address" | translate }}
+                    </button>
                 </div>
             </div>
             <div class="col-12 col-md-6">
                 <div class="form-group mb-3 text-center">
                     <p class="mt-3 font-size-18">{{ "text_call_search_postal_code" | translate }}</p>
                     <button type="button" class="btn btn-warning is-filled"
-                    (click)="toggleVisibility('search-postal-code')">{{ "button_search_postal_code" | translate }}</button>
+                        (click)="toggleVisibility('search-postal-code')">
+                        {{ "button_search_postal_code" | translate }}
+                    </button>
                 </div>
             </div>
         </div>
@@ -35,9 +39,11 @@
                             <b>CEP</b>
                         </p>
                         <div class="input-group input-group-sm">
-                            <input type="text" placeholder="99999-999" class="form-control">
+                            <input type="text" id="get-postal-code-cep" placeholder="99999-999" 
+                                class="form-control" mask="00000-000" [(ngModel)]="cepGetPostalCode">
                             <div class="input-group-append">
-                                <button type="button" class="btn btn-info border-0">
+                                <button type="button" class="btn btn-info border-0" 
+                                    (click)="getAddressByCEP(cepGetPostalCode)">
                                     <i class="material-icons v-middle">search</i>
                                 </button>
                             </div>
@@ -56,7 +62,8 @@
                             <b>{{ "state" | translate }}</b>
                         </p>
                         <div class="input-group">
-                            <input type="text" placeholder="{{ 'state_placeholder' | translate }}" class="form-control">
+                            <input type="text" placeholder="{{ 'state_placeholder' | translate }}"
+                                class="form-control">
                         </div>
                     </div>
                 </div>
@@ -76,7 +83,8 @@
                             <b>{{ "public_place" | translate }}</b>
                         </p>
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="{{ 'public_place' | translate }}" />
+                            <input type="text" class="form-control" 
+                                placeholder="{{ 'public_place' | translate }}" />
                             <div class="input-group-append">
                                 <button type="button" class="btn btn-info border-0">
                                     <i class="material-icons v-middle">search</i>
