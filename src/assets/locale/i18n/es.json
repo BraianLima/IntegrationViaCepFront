@@ -25,5 +25,7 @@
     "gia_placeholder": "9999",
     "ddd_placeholder": "99",
     "siafi_placeholder": "9999",
-    "state_placeholder": "SP"
+    "state_placeholder": "SP",
+    "invalid_cep": "CEP no válido",
+    "please_enter_cep_valid": "Por favor ingrese un CEP válido."
 }

@@ -33,13 +33,18 @@ export class ContentComponent {
 
   public getAddressByCEP(cepGetPostalCode: string){
     if (!cepIsValid(cepGetPostalCode)) {
-      const currentLanguage = this.languageService.getLanguage('');
       Swal.fire({
         icon: 'error',
-        title: 'CEP inválido',
-        text: 'Por favor, insira um CEP válido.',
+        title: this.languageService.getTranslateMessagesI18n('invalid_cep'),
+        text: this.languageService.getTranslateMessagesI18n('please_enter_cep_valid'),
       });
       return;
     }
+
+    Swal.fire({
+      icon: 'success',
+      title: 'Teste',
+      text: 'texto',
+    });
   }
 }

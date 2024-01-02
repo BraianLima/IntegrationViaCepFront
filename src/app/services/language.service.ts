@@ -68,17 +68,10 @@ export class LanguageService {
     this.cookieService.set(this.cookieName, browserLanguage, expirationDate, '/');
   }
 
-  // public getTranslateMessagesI18n(propToTranslate: string): string {
-  //   const translatedMessage = this.translateService.get(propToTranslate);
-  //   console.log(translatedMessage);
-  //   let propToReturn: string = '';
-  //   translatedMessage.pipe(map((propTranslated: string) => {
-  //     console.log('aqui')
-  //     propToReturn = propTranslated;
-  //   }));
-
-  //   return propToReturn;
-  // }
+  public getTranslateMessagesI18n(propToTranslate: string): string {
+    const propToReturn: string = String(this.translateService.instant(propToTranslate));
+    return propToReturn;
+  }
 
 }
   
