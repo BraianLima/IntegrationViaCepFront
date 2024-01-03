@@ -6,7 +6,7 @@
                     <b>CEP</b>
                 </p>
                 <div class="input-group input-group-sm">
-                    <input type="text" class="form-control" placeholder="99999-999" disabled />
+                    <input type="text" class="form-control" placeholder="99999-999" [value]="address?.data?.cepCode" disabled />
                     <div class="input-group-append">
                         <button type="button" class="btn btn-dark border-0">
                             <i class="material-icons v-middle">content_copy</i>
@@ -22,7 +22,7 @@
                 </p>
                 <div class="input-group input-group-sm">
                     <input type="text" class="form-control" 
-                        placeholder="{{ 'street_placeholder' | translate }}" disabled />
+                        placeholder="{{ 'public_place' | translate }}" [value]="address?.data?.publicPlace" disabled />
                     <div class="input-group-append">
                         <button type="button" class="btn btn-dark border-0">
                             <i class="material-icons v-middle">content_copy</i>
@@ -38,7 +38,7 @@
                 </p>
                 <div class="input-group input-group-sm">
                     <input type="text" class="form-control" 
-                        placeholder="{{ 'complement' | translate }}" disabled />
+                        placeholder="{{ 'complement' | translate }}" [value]="address?.data?.complement" disabled />
                     <div class="input-group-append">
                         <button type="button" class="btn btn-dark border-0">
                             <i class="material-icons v-middle">content_copy</i>
@@ -54,7 +54,7 @@
                 </p>
                 <div class="input-group input-group-sm">
                     <input type="text" class="form-control" 
-                        placeholder="{{ 'district' | translate }}" disabled />
+                        placeholder="{{ 'district' | translate }}" [value]="address?.data?.district" disabled />
                     <div class="input-group-append">
                         <button type="button" class="btn btn-dark border-0">
                             <i class="material-icons v-middle">content_copy</i>
@@ -70,7 +70,7 @@
                 </p>
                 <div class="input-group input-group-sm">
                     <input type="text" class="form-control" 
-                        placeholder="{{ 'county' | translate }}" disabled />
+                        placeholder="{{ 'county' | translate }}" [value]="address?.data?.county" disabled />
                     <div class="input-group-append">
                         <button type="button" class="btn btn-dark border-0">
                             <i class="material-icons v-middle">content_copy</i>
@@ -85,7 +85,8 @@
                     <b>{{ "state" | translate }}</b>
                 </p>
                 <div class="input-group input-group-sm">
-                    <input type="text" class="form-control" value="{{ 'state' | translate }}" disabled />
+                    <input type="text" class="form-control" 
+                        placeholder="{{ 'state' | translate }}" [value]="address?.data?.state" disabled />
                     <div class="input-group-append">
                         <button type="button" class="btn btn-dark border-0">
                             <i class="material-icons v-middle">content_copy</i>
@@ -101,7 +102,7 @@
                 </p>
                 <div class="input-group input-group-sm">
                     <input type="text" class="form-control" 
-                        placeholder="{{ 'ibge_placeholder' | translate }}" disabled />
+                        placeholder="{{ 'ibge_placeholder' | translate }}" [value]="address?.data?.ibge" disabled />
                     <div class="input-group-append">
                         <button type="button" class="btn btn-dark border-0">
                             <i class="material-icons v-middle">content_copy</i>
@@ -116,8 +117,8 @@
                     <b>{{ "gia" | translate }}</b>
                 </p>
                 <div class="input-group input-group-sm">
-                    <input type="text" class="form-control" 
-                        placeholder="{{ 'gia_placeholder' | translate }}" disabled />
+                    <input type="text" class="form-control" placeholder="{{ 'gia_placeholder' | translate }}" 
+                        [value]="address?.data?.gia" disabled />
                     <div class="input-group-append">
                         <button type="button" class="btn btn-dark border-0">
                             <i class="material-icons v-middle">content_copy</i>
@@ -132,8 +133,8 @@
                     <b>{{ "ddd" | translate }}</b>
                 </p>
                 <div class="input-group input-group-sm">
-                    <input type="text" class="form-control" 
-                        placeholder="{{ 'ddd_placeholder' | translate }}" disabled />
+                    <input type="text" class="form-control" placeholder="{{ 'ddd_placeholder' | translate }}" 
+                        [value]="address?.data?.ddd" disabled />
                     <div class="input-group-append">
                         <button type="button" class="btn btn-dark border-0">
                             <i class="material-icons v-middle">content_copy</i>
@@ -148,8 +149,8 @@
                     <b>{{ "siafi" | translate }}</b>
                 </p>
                 <div class="input-group input-group-sm">
-                    <input type="text" class="form-control" 
-                        placeholder="{{ 'siafi_placeholder' | translate }}" disabled />
+                    <input type="text" class="form-control" placeholder="{{ 'siafi_placeholder' | translate }}"
+                        [value]="address?.data?.siafi" disabled />
                     <div class="input-group-append">
                         <button type="button" class="btn btn-dark border-0">
                             <i class="material-icons v-middle">content_copy</i>

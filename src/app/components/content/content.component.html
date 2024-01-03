@@ -51,7 +51,7 @@
                     </div>
                 </div>
             </div>
-            <app-cep-output [ngClass]="{ 'd-none': isLoading }"></app-cep-output>
+            <app-cep-output [address]="address" [ngClass]="{ 'd-none': isLoading }"></app-cep-output>
         </div>
 
         <div class="search-postal-code row fade-in" *ngIf="isBlockSearchPostalCode">
