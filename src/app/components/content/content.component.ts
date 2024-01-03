@@ -15,12 +15,14 @@ export class ContentComponent {
 
   constructor(private renderer: Renderer2, private el: ElementRef, private languageService: LanguageService,
     private integrationViaCepService: IntegrationViaCepService,
-    private sweetalertService: SweetAlertService) {}
+    private sweetalertService: SweetAlertService
+  ) {}
 
   public isBlockSearchPostalCode: boolean = false;
   public isBlockGetPostalCode: boolean = false;
   public showBorderCustomResult: boolean = false;
   public cepGetPostalCode: string = '';
+  public isLoading: boolean = false;
   
   public toggleVisibility(action: string) {
     this.showBorderCustomResult = true;
@@ -38,18 +40,22 @@ export class ContentComponent {
 
   public getAddressByCEP(cepGetPostalCode: string){
     if (!cepIsValid(cepGetPostalCode)) {
-      this.sweetalertService.getAlertByIcon('error', 'invalid_cep', 'please_enter_cep_valid')
+      this.sweetalertService.getAlertByIcon('error', 'invalid_cep', 'please_enter_cep_valid');
       return;
     }
-
+    
+    this.isLoading = true;
     this.integrationViaCepService.getPostalCode(cepGetPostalCode).pipe().subscribe({
       next: (data: responseGetCEP) => {
+        this.isLoading = false;
         console.log(data);
       },
       error: (error: HttpErrorResponse) => {
+        this.isLoading = false;
         this.sweetalertService.getAlertByHttpErrorResponse(error, 'cep_not_found_title', 'cep_not_found_text');
       }
     });
+
   }
   
 }

@@ -32,7 +32,7 @@
         </div>
         
         <div class="get-postal-code row fade-in" *ngIf="isBlockGetPostalCode">
-            <div class="row mb-3 mt-3 mx-0 p-0">
+            <div class="row mb-3 mt-3 mx-0 p-0" [ngClass]="{ 'd-none': isLoading }">
                 <div class="col-12">
                     <div class="input-group">
                         <p class="mb-0">
@@ -51,59 +51,69 @@
                     </div>
                 </div>
             </div>
-            <app-cep-output></app-cep-output>
+            <app-cep-output [ngClass]="{ 'd-none': isLoading }"></app-cep-output>
         </div>
 
-        <div class="search-postal-code row fade-in"  *ngIf="isBlockSearchPostalCode">
-            <div class="row mb-3 mt-3 mx-0 p-0">
-                <div class="col-12 col-md-6">
-                    <div class="input-group mb-3">
-                        <p class="mb-0">
-                            <b>{{ "state" | translate }}</b>
-                        </p>
-                        <div class="input-group">
-                            <input type="text" placeholder="{{ 'state_placeholder' | translate }}"
-                                class="form-control">
+        <div class="search-postal-code row fade-in" *ngIf="isBlockSearchPostalCode">
+            <div [ngClass]="{ 'd-none': isLoading }">
+                <div class="row mb-3 mt-3 mx-0 p-0">
+                    <div class="col-12 col-md-6">
+                        <div class="input-group mb-3">
+                            <p class="mb-0">
+                                <b>{{ "state" | translate }}</b>
+                            </p>
+                            <div class="input-group">
+                                <input type="text" placeholder="{{ 'state_placeholder' | translate }}"
+                                    class="form-control">
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-12 col-md-6">
-                    <div class="input-group mb-3">
-                        <p class="mb-0">
-                            <b>{{ "county" | translate }}</b>
-                        </p>
-                        <div class="input-group">
-                            <input type="text" placeholder="{{ 'county' | translate }}" class="form-control">
+                    <div class="col-12 col-md-6">
+                        <div class="input-group mb-3">
+                            <p class="mb-0">
+                                <b>{{ "county" | translate }}</b>
+                            </p>
+                            <div class="input-group">
+                                <input type="text" placeholder="{{ 'county' | translate }}" class="form-control">
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-12">
-                    <div class="input-group">
-                        <p class="mb-0">
-                            <b>{{ "public_place" | translate }}</b>
-                        </p>
+                    <div class="col-12">
                         <div class="input-group">
-                            <input type="text" class="form-control" 
-                                placeholder="{{ 'public_place' | translate }}" />
-                            <div class="input-group-append">
-                                <button type="button" class="btn btn-info border-0">
-                                    <i class="material-icons v-middle">search</i>
-                                </button>
+                            <p class="mb-0">
+                                <b>{{ "public_place" | translate }}</b>
+                            </p>
+                            <div class="input-group">
+                                <input type="text" class="form-control" 
+                                    placeholder="{{ 'public_place' | translate }}" />
+                                <div class="input-group-append">
+                                    <button type="button" class="btn btn-info border-0">
+                                        <i class="material-icons v-middle">search</i>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <app-cep-output [ngClass]="{ 'd-none': isLoading }"></app-cep-output>
             </div>
-            <app-cep-output></app-cep-output>
         </div>
 
-        <div class="fade-in visible" *ngIf="showBorderCustomResult">
+        <div class="fade-in visible" *ngIf="showBorderCustomResult && !isLoading">
             <div class="row mb-3">
                 <div class="col-12">
                     <button type="button" class="btn btn-success m-auto text-center d-block">
                         <i class="material-icons v-middle">content_copy</i> Copy to clipboard
                     </button>
                 </div>
+            </div>
+        </div>
+
+        <div class="fade-in visible" *ngIf="isLoading">
+            <div class="text-center">
+                <i class="material-icons v-middle rotate-infinite font-size-20-rem-sync">
+                    sync
+                </i>
             </div>
         </div>
     </div>
