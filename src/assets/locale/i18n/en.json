@@ -27,5 +27,9 @@
     "siafi_placeholder": "9999",
     "state_placeholder": "SP",
     "invalid_cep": "CEP invalid",
-    "please_enter_cep_valid": "Please enter a valid CEP."
+    "please_enter_cep_valid": "Please enter a valid CEP.",
+    "error_text_get_cep": "Erro ao buscar o CEP, tente novamente mais tarde",
+    "error_title_get_cep": "Error to get CEP",
+    "cep_not_found_text": "Try other CEP",
+    "cep_not_found_title": "CEP not found"
 }

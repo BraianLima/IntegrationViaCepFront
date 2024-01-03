@@ -3,7 +3,6 @@ import { TranslateService } from '@ngx-translate/core';
 import { DOCUMENT } from '@angular/common';
 import { CookieService } from 'ngx-cookie-service';
 import { isNullOrEmpty } from '../utils/string-utils';
-import { map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'

@@ -1,7 +1,10 @@
 import { Component, Renderer2, ElementRef } from '@angular/core';
 import { cepIsValid } from '../../validators/cep-validators';
-import Swal from 'sweetalert2';
 import { LanguageService } from '../../services/language.service';
+import { IntegrationViaCepService } from '../../services/integrationviacep.service';
+import { responseGetCEP } from '../../models/responseGetPostalCode';
+import { HttpErrorResponse } from '@angular/common/http';
+import { SweetAlertService } from '../../services/sweetalert.service';
  
 @Component({
   selector: 'app-content',
@@ -10,7 +13,9 @@ import { LanguageService } from '../../services/language.service';
 })
 export class ContentComponent {
 
-  constructor(private renderer: Renderer2, private el: ElementRef, private languageService: LanguageService) {}
+  constructor(private renderer: Renderer2, private el: ElementRef, private languageService: LanguageService,
+    private integrationViaCepService: IntegrationViaCepService,
+    private sweetalertService: SweetAlertService) {}
 
   public isBlockSearchPostalCode: boolean = false;
   public isBlockGetPostalCode: boolean = false;
@@ -33,18 +38,18 @@ export class ContentComponent {
 
   public getAddressByCEP(cepGetPostalCode: string){
     if (!cepIsValid(cepGetPostalCode)) {
-      Swal.fire({
-        icon: 'error',
-        title: this.languageService.getTranslateMessagesI18n('invalid_cep'),
-        text: this.languageService.getTranslateMessagesI18n('please_enter_cep_valid'),
-      });
+      this.sweetalertService.getAlertByIcon('error', 'invalid_cep', 'please_enter_cep_valid')
       return;
     }
 
-    Swal.fire({
-      icon: 'success',
-      title: 'Teste',
-      text: 'texto',
+    this.integrationViaCepService.getPostalCode(cepGetPostalCode).pipe().subscribe({
+      next: (data: responseGetCEP) => {
+        console.log(data);
+      },
+      error: (error: HttpErrorResponse) => {
+        this.sweetalertService.getAlertByHttpErrorResponse(error, 'cep_not_found_title', 'cep_not_found_text');
+      }
     });
   }
+  
 }
