@@ -23,7 +23,7 @@ export class ClipboardService {
                 this.renderer.removeClass(inputElement, 'is-valid');
                 this.renderer.addClass(buttonElement,'btn-dark');
                 this.renderer.removeClass(buttonElement, 'clipboard-green');
-            }, 2000);
+            }, 3000);
         }
     }
     
