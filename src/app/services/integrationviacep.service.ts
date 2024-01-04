@@ -11,9 +11,9 @@ export class IntegrationViaCepService {
 
     constructor(private http: HttpClient) {}
 
-    getPostalCode(cepCode: string): Observable<responseGetCEP> {
-        const url = `${this.baseUrl}/PostalCode/GetPostalCode?cepCode=${cepCode}`;
-        return this.http.get<responseGetCEP>(url);
+    public getPostalCode(cepCode: string): Observable<responseGetCEP> {
+      const url = `${this.baseUrl}/PostalCode/GetPostalCode?cepCode=${cepCode}`;
+      return this.http.get<responseGetCEP>(url);
     }
     
 }

@@ -1,5 +1,6 @@
-import { Component, ElementRef, Input, Renderer2 } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { responseGetCEP } from '../../../models/responseGetPostalCode';
+import { ClipboardService } from '../../../services/clipboard.service';
 
 @Component({
   selector: 'app-cep-output',
@@ -9,17 +10,10 @@ import { responseGetCEP } from '../../../models/responseGetPostalCode';
 export class CepOutputComponent {
   @Input() address: responseGetCEP = new responseGetCEP;
 
-  constructor(private renderer: Renderer2) {}
+  constructor(private  clipboardService: ClipboardService) {}
 
-  public copyToClipboard(inputId: string): void {
-    const inputElement = document.getElementById(inputId) as HTMLInputElement;
-    if (inputElement) {
-      const inputValue = inputElement.value;
-      navigator.clipboard.writeText(inputValue);
-      this.renderer.addClass(inputElement, 'is-valid');
-      setTimeout(() => {
-        this.renderer.removeClass(inputElement, 'is-valid');
-      }, 2000);
-    }
+  public copyToClipboardByService(inputId: string, event: Event): void {
+    const buttonElement = event.currentTarget as HTMLButtonElement;
+    this.clipboardService.copyToClipboard(inputId, buttonElement);
   }
 }
