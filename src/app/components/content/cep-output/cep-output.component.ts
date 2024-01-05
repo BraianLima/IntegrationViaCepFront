@@ -57,6 +57,6 @@ export class CepOutputComponent implements OnInit, OnChanges  {
       siafi: (this.postalCodeClipboard.siafi ?? '')
     };
 
-    this.clipboardService.copyAllAddressToClipboard(addressData);
+    this.clipboardService.copyVisibleFieldsOfAddressToClipboard(addressData);
   }
 }

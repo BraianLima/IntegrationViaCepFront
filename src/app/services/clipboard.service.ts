@@ -29,7 +29,7 @@ export class ClipboardService {
         }
     }
 
-    public copyAllAddressToClipboard(addressData: Record<string, string>): void {
+    public copyVisibleFieldsOfAddressToClipboard(addressData: Record<string, string>): void {
         const lines: string[] = [];
         for (const [key, value] of Object.entries(addressData)) {
             lines.push(`${this.languageService.getTranslateMessagesI18n(key)}: ${value ?? ''}`);
