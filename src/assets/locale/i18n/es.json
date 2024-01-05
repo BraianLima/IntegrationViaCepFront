@@ -11,6 +11,7 @@
     "text_call_search_postal_code": "¿No sabes el CEP?",
     "button_search_postal_code": "Buscar CEP usando la dirección",
     "none_option_chosen": "Ninguna opción elegida",
+    "cep": "CEP",
     "public_place": "Lugar público",
     "complement": "Complementar",
     "district": "Vecindario",

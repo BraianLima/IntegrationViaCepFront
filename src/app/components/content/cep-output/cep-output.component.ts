@@ -45,8 +45,8 @@ export class CepOutputComponent implements OnInit, OnChanges  {
 
   public copyAllAddressToClipboardByService(): void {
     const addressData: Record<string, string> = {
-      CEP: (this.postalCodeClipboard.cepCode ?? ''),
-      publicPlace: (this.postalCodeClipboard.publicPlace ?? ''),
+      cep: (this.postalCodeClipboard.cepCode ?? ''),
+      public_place: (this.postalCodeClipboard.publicPlace ?? ''),
       complement: (this.postalCodeClipboard.complement ?? ''),
       district: (this.postalCodeClipboard.district ?? ''),
       county: (this.postalCodeClipboard.county ?? ''),
