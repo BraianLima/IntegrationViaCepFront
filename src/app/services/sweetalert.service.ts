@@ -28,16 +28,16 @@ export class SweetAlertService {
     }
 
     public getAlertByIcon(icon: string, alertTitle: string, alertText: string): void {
-        const iconSweetAlert: SweetAlertIcon = icon as SweetAlertIcon;
-        Swal.fire({
-            icon: iconSweetAlert,
-            title: this.getTranslateMessages(alertTitle),
-            text: this.getTranslateMessages(alertText),
-        });
+      const iconSweetAlert: SweetAlertIcon = icon as SweetAlertIcon;
+      Swal.fire({
+          icon: iconSweetAlert,
+          title: this.getTranslateMessages(alertTitle),
+          text: this.getTranslateMessages(alertText),
+      });
     }
 
     private getTranslateMessages(message: string): string {
-        return this.languageService.getTranslateMessagesI18n(message);
+      return this.languageService.getTranslateMessagesI18n(message);
     }
 }
   

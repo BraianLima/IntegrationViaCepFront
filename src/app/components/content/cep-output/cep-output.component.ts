@@ -1,7 +1,6 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { responseGetCEP } from '../../../models/responseGetPostalCode';
 import { ClipboardService } from '../../../services/clipboard.service';
-import { responseSearchPostalCode } from '../../../models/responseSearchPostalCode';
 import { postalCode } from '../../../models/postalCode';
 
 @Component({
@@ -44,7 +43,20 @@ export class CepOutputComponent implements OnInit, OnChanges  {
     this.clipboardService.copyToClipboard(inputId, buttonElement);
   }
 
-  public copyAllAddressToClipboardByService(): void{
-    console.log(this.postalCodeClipboard)
+  public copyAllAddressToClipboardByService(): void {
+    const addressData: Record<string, string> = {
+      CEP: (this.postalCodeClipboard.cepCode ?? ''),
+      publicPlace: (this.postalCodeClipboard.publicPlace ?? ''),
+      complement: (this.postalCodeClipboard.complement ?? ''),
+      district: (this.postalCodeClipboard.district ?? ''),
+      county: (this.postalCodeClipboard.county ?? ''),
+      state: (this.postalCodeClipboard.state ?? ''),
+      ibge: (this.postalCodeClipboard.ibge ?? ''),
+      gia: (this.postalCodeClipboard.gia ?? ''),
+      ddd: (this.postalCodeClipboard.ddd ?? ''),
+      siafi: (this.postalCodeClipboard.siafi ?? '')
+    };
+
+    this.clipboardService.copyAllAddressToClipboard(addressData);
   }
 }
