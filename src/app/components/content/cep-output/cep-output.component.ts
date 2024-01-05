@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { responseGetCEP } from '../../../models/responseGetPostalCode';
 import { ClipboardService } from '../../../services/clipboard.service';
 import { responseSearchPostalCode } from '../../../models/responseSearchPostalCode';
+import { postalCode } from '../../../models/postalCode';
 
 @Component({
   selector: 'app-cep-output',
@@ -10,7 +11,8 @@ import { responseSearchPostalCode } from '../../../models/responseSearchPostalCo
 })
 export class CepOutputComponent {
   @Input() address: responseGetCEP = new responseGetCEP;
-  @Input() addressSearchCEP: responseSearchPostalCode = new responseSearchPostalCode; 
+  @Input() isBlockSearchPostalCode: boolean = false; 
+  @Input() postalCode: postalCode = new postalCode;
   
   constructor(private  clipboardService: ClipboardService) {}
 

@@ -51,7 +51,7 @@
                     </div>
                 </div>
             </div>
-            <app-cep-output [address]="address" [ngClass]="{ 'd-none': isLoading }"></app-cep-output>
+            <app-cep-output [address]="address" [isBlockSearchPostalCode]="isBlockSearchPostalCode" [ngClass]="{ 'd-none': isLoading }"></app-cep-output>
         </div>
 
         <div class="search-postal-code row fade-in" *ngIf="isBlockSearchPostalCode">
@@ -101,6 +101,12 @@
                         </div>
                     </div>
                 </form>
+            </div>
+
+            <div *ngFor="let postalCode of addressSearchCEP?.data">
+                <app-cep-output [postalCode]="postalCode" [isBlockSearchPostalCode]="isBlockSearchPostalCode"  
+                    [ngClass]="{ 'd-none': isLoading }"></app-cep-output>
+                <hr>
             </div>
         </div>
 
