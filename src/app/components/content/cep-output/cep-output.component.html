@@ -1,182 +1,204 @@
-<div class="mt-3">
-    <div class="row">
-        <div class="col-12 col-md-3">
-            <div class="input-group mb-3">
-                <p class="mb-0">
-                    <b>CEP</b>
-                </p>
-                <div class="input-group input-group-sm">
-                    <input id="cepCode" type="text" class="form-control" placeholder="99999-999" 
-                        [value]="isBlockSearchPostalCode ? postalCode?.cepCode : address?.data?.cepCode" disabled />
-                    <div class="input-group-append">
-                        <button type="button" class="btn btn-dark border-0" 
-                            (click)="copyToClipboardByService('cepCode', $event)">
-                            <i class="material-icons v-middle">content_copy</i>
-                        </button>
+<form id="formCepOutput" (ngSubmit)="copyAllAddressToClipboardByService()">
+    <div class="mt-3">
+        <div class="row">
+            <div class="col-12 col-md-3">
+                <div class="input-group mb-3">
+                    <p class="mb-0">
+                        <b>CEP</b>
+                    </p>
+                    <div class="input-group input-group-sm">
+                        <input id="cepCode" type="text" class="form-control" placeholder="99999-999" 
+                            [(ngModel)]="postalCodeClipboard.cepCode" 
+                            [value]="postalCodeClipboard.cepCode" 
+                            name="cepCode" disabled />
+                        <div class="input-group-append">
+                            <button type="button" class="btn btn-dark border-0" 
+                                (click)="copyToClipboardByService('cepCode', $event)">
+                                <i class="material-icons v-middle">content_copy</i>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-12 col-md-5">
-            <div class="input-group mb-3">
-                <p class="mb-0">
-                    <b>{{ "public_place" | translate }}</b>
-                </p>
-                <div class="input-group input-group-sm">
-                    <input id="publicPlace" type="text" class="form-control" 
-                        placeholder="{{ 'public_place' | translate }}" 
-                        [value]="isBlockSearchPostalCode ? postalCode?.publicPlace : address?.data?.publicPlace" disabled />
-                    <div class="input-group-append">
-                        <button type="button" class="btn btn-dark border-0" (click)="copyToClipboardByService('publicPlace', $event)">
-                            <i class="material-icons v-middle">content_copy</i>
-                        </button>
+            <div class="col-12 col-md-5">
+                <div class="input-group mb-3">
+                    <p class="mb-0">
+                        <b>{{ "public_place" | translate }}</b>
+                    </p>
+                    <div class="input-group input-group-sm">
+                        <input id="publicPlace" type="text" class="form-control" 
+                            placeholder="{{ 'public_place' | translate }}" 
+                            [(ngModel)]="postalCodeClipboard.publicPlace" 
+                            [value]="postalCodeClipboard.publicPlace" 
+                            name="publicPlace" disabled />
+                        <div class="input-group-append">
+                            <button type="button" class="btn btn-dark border-0" (click)="copyToClipboardByService('publicPlace', $event)">
+                                <i class="material-icons v-middle">content_copy</i>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-12 col-md-4">
-            <div class="input-group mb-3">
-                <p class="mb-0">
-                    <b>{{ "complement" | translate }}</b>
-                </p>
-                <div class="input-group input-group-sm">
-                    <input id="complement" type="text" class="form-control" 
-                        placeholder="{{ 'complement' | translate }}" 
-                        [value]="isBlockSearchPostalCode ? postalCode?.complement : address?.data?.complement" disabled />
-                    <div class="input-group-append">
-                        <button type="button" class="btn btn-dark border-0" (click)="copyToClipboardByService('complement', $event)">
-                            <i class="material-icons v-middle">content_copy</i>
-                        </button>
+            <div class="col-12 col-md-4">
+                <div class="input-group mb-3">
+                    <p class="mb-0">
+                        <b>{{ "complement" | translate }}</b>
+                    </p>
+                    <div class="input-group input-group-sm">
+                        <input id="complement" type="text" class="form-control" 
+                            placeholder="{{ 'complement' | translate }}" 
+                            [(ngModel)]="postalCodeClipboard.complement" 
+                            [value]="postalCodeClipboard.complement" 
+                            name="complement" disabled />
+                        <div class="input-group-append">
+                            <button type="button" class="btn btn-dark border-0" (click)="copyToClipboardByService('complement', $event)">
+                                <i class="material-icons v-middle">content_copy</i>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-12 col-md-4">
-            <div class="input-group mb-3">
-                <p class="mb-0">
-                    <b>{{ "district" | translate }}</b>
-                </p>
-                <div class="input-group input-group-sm">
-                    <input id="district" type="text" class="form-control" 
-                        placeholder="{{ 'district' | translate }}" 
-                        [value]="isBlockSearchPostalCode ? postalCode?.district : address?.data?.district" disabled />
-                    <div class="input-group-append">
-                        <button type="button" class="btn btn-dark border-0" (click)="copyToClipboardByService('district', $event)">
-                            <i class="material-icons v-middle">content_copy</i>
-                        </button>
+            <div class="col-12 col-md-4">
+                <div class="input-group mb-3">
+                    <p class="mb-0">
+                        <b>{{ "district" | translate }}</b>
+                    </p>
+                    <div class="input-group input-group-sm">
+                        <input id="district" type="text" class="form-control" 
+                            placeholder="{{ 'district' | translate }}" 
+                            [(ngModel)]="postalCodeClipboard.district" 
+                            [value]="postalCodeClipboard.district"
+                            name="district" disabled />
+                        <div class="input-group-append">
+                            <button type="button" class="btn btn-dark border-0" (click)="copyToClipboardByService('district', $event)">
+                                <i class="material-icons v-middle">content_copy</i>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-12 col-md-4">
-            <div class="input-group mb-3">
-                <p class="mb-0">
-                    <b>{{ "county" | translate }}</b>
-                </p>
-                <div class="input-group input-group-sm">
-                    <input id="county" type="text" class="form-control" 
-                        placeholder="{{ 'county' | translate }}" 
-                        [value]="isBlockSearchPostalCode ? postalCode?.county : address?.data?.county" disabled />
-                    <div class="input-group-append">
-                        <button type="button" class="btn btn-dark border-0" (click)="copyToClipboardByService('county', $event)">
-                            <i class="material-icons v-middle">content_copy</i>
-                        </button>
+            <div class="col-12 col-md-4">
+                <div class="input-group mb-3">
+                    <p class="mb-0">
+                        <b>{{ "county" | translate }}</b>
+                    </p>
+                    <div class="input-group input-group-sm">
+                        <input id="county" type="text" class="form-control" 
+                            placeholder="{{ 'county' | translate }}" 
+                            [(ngModel)]="postalCodeClipboard.county" 
+                            [value]="postalCodeClipboard.county"
+                            name="county" disabled />
+                        <div class="input-group-append">
+                            <button type="button" class="btn btn-dark border-0" (click)="copyToClipboardByService('county', $event)">
+                                <i class="material-icons v-middle">content_copy</i>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-12 col-md-4">
-            <div class="input-group mb-3">
-                <p class="mb-0">
-                    <b>{{ "state" | translate }}</b>
-                </p>
-                <div class="input-group input-group-sm">
-                    <input id="state" type="text" class="form-control" 
-                        placeholder="{{ 'state' | translate }}" 
-                        [value]="isBlockSearchPostalCode ? postalCode?.state : address?.data?.state" disabled />
-                    <div class="input-group-append">
-                        <button type="button" class="btn btn-dark border-0" (click)="copyToClipboardByService('state', $event)">
-                            <i class="material-icons v-middle">content_copy</i>
-                        </button>
+            <div class="col-12 col-md-4">
+                <div class="input-group mb-3">
+                    <p class="mb-0">
+                        <b>{{ "state" | translate }}</b>
+                    </p>
+                    <div class="input-group input-group-sm">
+                        <input id="state" type="text" class="form-control" 
+                            placeholder="{{ 'state' | translate }}" 
+                            [(ngModel)]="postalCodeClipboard.state" 
+                            [value]="postalCodeClipboard.state"
+                            name="state" disabled />
+                        <div class="input-group-append">
+                            <button type="button" class="btn btn-dark border-0" (click)="copyToClipboardByService('state', $event)">
+                                <i class="material-icons v-middle">content_copy</i>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-12 col-md-3">
-            <div class="input-group mb-3">
-                <p class="mb-0">
-                    <b>{{ "ibge" | translate }}</b>
-                </p>
-                <div class="input-group input-group-sm">
-                    <input id="ibge" type="text" class="form-control" 
-                        placeholder="{{ 'ibge_placeholder' | translate }}" 
-                        [value]="isBlockSearchPostalCode ? postalCode?.ibge : address?.data?.ibge" disabled />
-                    <div class="input-group-append">
-                        <button type="button" class="btn btn-dark border-0" (click)="copyToClipboardByService('ibge', $event)">
-                            <i class="material-icons v-middle">content_copy</i>
-                        </button>
+            <div class="col-12 col-md-3">
+                <div class="input-group mb-3">
+                    <p class="mb-0">
+                        <b>{{ "ibge" | translate }}</b>
+                    </p>
+                    <div class="input-group input-group-sm">
+                        <input id="ibge" type="text" class="form-control" 
+                            placeholder="{{ 'ibge_placeholder' | translate }}" 
+                            [(ngModel)]="postalCodeClipboard.ibge" 
+                            [value]="postalCodeClipboard.ibge"
+                            name="ibge" disabled />
+                        <div class="input-group-append">
+                            <button type="button" class="btn btn-dark border-0" (click)="copyToClipboardByService('ibge', $event)">
+                                <i class="material-icons v-middle">content_copy</i>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-12 col-md-3">
-            <div class="input-group mb-3">
-                <p class="mb-0">
-                    <b>{{ "gia" | translate }}</b>
-                </p>
-                <div class="input-group input-group-sm">
-                    <input id="gia" type="text" class="form-control" 
-                        placeholder="{{ 'gia_placeholder' | translate }}" 
-                        [value]="isBlockSearchPostalCode ? postalCode?.gia : address?.data?.gia" disabled />
-                    <div class="input-group-append">
-                        <button type="button" class="btn btn-dark border-0" (click)="copyToClipboardByService('gia', $event)">
-                            <i class="material-icons v-middle">content_copy</i>
-                        </button>
+            <div class="col-12 col-md-3">
+                <div class="input-group mb-3">
+                    <p class="mb-0">
+                        <b>{{ "gia" | translate }}</b>
+                    </p>
+                    <div class="input-group input-group-sm">
+                        <input id="gia" type="text" class="form-control" 
+                            placeholder="{{ 'gia_placeholder' | translate }}" 
+                            [(ngModel)]="postalCodeClipboard.gia"
+                            [value]="postalCodeClipboard.gia"
+                            name="gia" disabled />
+                        <div class="input-group-append">
+                            <button type="button" class="btn btn-dark border-0" (click)="copyToClipboardByService('gia', $event)">
+                                <i class="material-icons v-middle">content_copy</i>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-12 col-md-3">
-            <div class="input-group mb-3">
-                <p class="mb-0">
-                    <b>{{ "ddd" | translate }}</b>
-                </p>
-                <div class="input-group input-group-sm">
-                    <input id="ddd" type="text" class="form-control" 
-                        placeholder="{{ 'ddd_placeholder' | translate }}" 
-                        [value]="isBlockSearchPostalCode ? postalCode?.ddd : address?.data?.ddd" disabled />
-                    <div class="input-group-append">
-                        <button type="button" class="btn btn-dark border-0" (click)="copyToClipboardByService('ddd', $event)">
-                            <i class="material-icons v-middle">content_copy</i>
-                        </button>
+            <div class="col-12 col-md-3">
+                <div class="input-group mb-3">
+                    <p class="mb-0">
+                        <b>{{ "ddd" | translate }}</b>
+                    </p>
+                    <div class="input-group input-group-sm">
+                        <input id="ddd" type="text" class="form-control" 
+                            placeholder="{{ 'ddd_placeholder' | translate }}" 
+                            [(ngModel)]="postalCodeClipboard.ddd"
+                            [value]="postalCodeClipboard.ddd"
+                            name="ddd" disabled />
+                        <div class="input-group-append">
+                            <button type="button" class="btn btn-dark border-0" (click)="copyToClipboardByService('ddd', $event)">
+                                <i class="material-icons v-middle">content_copy</i>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-12 col-md-3">
-            <div class="input-group mb-3">
-                <p class="mb-0">
-                    <b>{{ "siafi" | translate }}</b>
-                </p>
-                <div class="input-group input-group-sm">
-                    <input id="siafi" type="text" class="form-control" 
-                        placeholder="{{ 'siafi_placeholder' | translate }}"
-                        [value]="isBlockSearchPostalCode ? postalCode?.siafi : address?.data?.siafi" disabled />
-                    <div class="input-group-append">
-                        <button type="button" class="btn btn-dark border-0" (click)="copyToClipboardByService('siafi', $event)">
-                            <i class="material-icons v-middle">content_copy</i>
-                        </button>
+            <div class="col-12 col-md-3">
+                <div class="input-group mb-3">
+                    <p class="mb-0">
+                        <b>{{ "siafi" | translate }}</b>
+                    </p>
+                    <div class="input-group input-group-sm">
+                        <input id="siafi" type="text" class="form-control" 
+                            placeholder="{{ 'siafi_placeholder' | translate }}"
+                            [(ngModel)]="postalCodeClipboard.siafi"
+                            [value]="postalCodeClipboard.siafi"
+                            name="siafi" disabled />
+                        <div class="input-group-append">
+                            <button type="button" class="btn btn-dark border-0" (click)="copyToClipboardByService('siafi', $event)">
+                                <i class="material-icons v-middle">content_copy</i>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-
-<div class="row mb-3">
-    <div class="col-12">
-        <button type="button" class="btn btn-success m-auto text-center d-block">
-            <i class="material-icons v-middle">content_copy</i> Copy to clipboard
-        </button>
+    
+    <div class="row mb-3">
+        <div class="col-12">
+            <button type="submit" class="btn btn-success m-auto text-center d-block">
+                <i class="material-icons v-middle">content_copy</i> Copy to clipboard
+            </button>
+        </div>
     </div>
-</div>
+</form>
