@@ -56,46 +56,51 @@
 
         <div class="search-postal-code row fade-in" *ngIf="isBlockSearchPostalCode">
             <div [ngClass]="{ 'd-none': isLoading }">
-                <div class="row mb-3 mt-3 mx-0 p-0">
-                    <div class="col-12 col-md-6">
-                        <div class="input-group mb-3">
-                            <p class="mb-0">
-                                <b>{{ "state" | translate }}</b>
-                            </p>
-                            <div class="input-group">
-                                <input type="text" placeholder="{{ 'state_placeholder' | translate }}"
-                                    class="form-control">
+                <form id="formSearchPostalCode" (ngSubmit)="searchPostalCode()">
+                    <div class="row mb-3 mt-3 mx-0 p-0">
+                        <div class="col-12 col-md-6">
+                            <div class="input-group mb-3">
+                                <p class="mb-0">
+                                    <b>{{ "state" | translate }}</b>
+                                </p>
+                                <div class="input-group">
+                                    <input type="text" placeholder="{{ 'state_placeholder' | translate }}"
+                                        class="form-control" [(ngModel)]="requestSearchCEP.state" name="state"
+                                        maxlength="2" required>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-12 col-md-6">
-                        <div class="input-group mb-3">
-                            <p class="mb-0">
-                                <b>{{ "county" | translate }}</b>
-                            </p>
-                            <div class="input-group">
-                                <input type="text" placeholder="{{ 'county' | translate }}" class="form-control">
+                        <div class="col-12 col-md-6">
+                            <div class="input-group mb-3">
+                                <p class="mb-0">
+                                    <b>{{ "county" | translate }}</b>
+                                </p>
+                                <div class="input-group">
+                                    <input type="text" placeholder="{{ 'county' | translate }}" 
+                                        class="form-control" [(ngModel)]="requestSearchCEP.county" 
+                                        name="county" required>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-12">
-                        <div class="input-group">
-                            <p class="mb-0">
-                                <b>{{ "public_place" | translate }}</b>
-                            </p>
+                        <div class="col-12">
                             <div class="input-group">
-                                <input type="text" class="form-control" 
-                                    placeholder="{{ 'public_place' | translate }}" />
-                                <div class="input-group-append">
-                                    <button type="button" class="btn btn-info border-0">
-                                        <i class="material-icons v-middle">search</i>
-                                    </button>
+                                <p class="mb-0">
+                                    <b>{{ "public_place" | translate }}</b>
+                                </p>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" 
+                                        placeholder="{{ 'public_place' | translate }}" 
+                                        [(ngModel)]="requestSearchCEP.publicPlace" name="publicPlace" required />
+                                    <div class="input-group-append">
+                                        <button type="submit" class="btn btn-info border-0">
+                                            <i class="material-icons v-middle">search</i>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <app-cep-output [ngClass]="{ 'd-none': isLoading }"></app-cep-output>
+                </form>
             </div>
         </div>
 
@@ -116,5 +121,6 @@
                 </i>
             </div>
         </div>
+
     </div>
 </div>

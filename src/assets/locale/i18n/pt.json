@@ -31,5 +31,7 @@
     "error_text_get_cep": "Erro ao buscar o CEP, tente novamente mais tarde",
     "error_title_get_cep": "Erro inesperado",
     "cep_not_found_text": "Tente outro CEP",
-    "cep_not_found_title": "CEP não encontrado"
+    "cep_not_found_title": "CEP não encontrado",
+    "search_cep_not_found_text": "Tente outro endereço",
+    "search_cep_not_found_title": "Endereço não encontrado"
 }

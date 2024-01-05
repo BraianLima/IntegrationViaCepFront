@@ -4,6 +4,8 @@ import { IntegrationViaCepService } from '../../services/integrationviacep.servi
 import { responseGetCEP } from '../../models/responseGetPostalCode';
 import { HttpErrorResponse } from '@angular/common/http';
 import { SweetAlertService } from '../../services/sweetalert.service';
+import { requestSearchPostalCode } from '../../models/requestSearchPostalCode';
+import { responseSearchPostalCode } from '../../models/responseSearchPostalCode';
  
 @Component({
   selector: 'app-content',
@@ -18,6 +20,8 @@ export class ContentComponent {
   public cepGetPostalCode: string = '';
   public isLoading: boolean = false;
   public address: responseGetCEP = new responseGetCEP; 
+  public addressSearchCEP: responseSearchPostalCode = new responseSearchPostalCode; 
+  public requestSearchCEP: requestSearchPostalCode = new requestSearchPostalCode;
 
   constructor(private renderer: Renderer2, private el: ElementRef,
     private integrationViaCepService: IntegrationViaCepService,
@@ -39,7 +43,7 @@ export class ContentComponent {
     }, 100);
   }
 
-  public getAddressByCEP(cepGetPostalCode: string){
+  public getAddressByCEP(cepGetPostalCode: string): void {
     if (!cepIsValid(cepGetPostalCode)) {
       this.sweetalertService.getAlertByIcon('error', 'invalid_cep', 'please_enter_cep_valid');
       return;
@@ -57,6 +61,20 @@ export class ContentComponent {
       }
     });
 
+  }
+
+  public searchPostalCode(): void {
+    this.isLoading = true;
+    this.integrationViaCepService.searchPostalCode(this.requestSearchCEP).pipe().subscribe({
+      next: (data: responseSearchPostalCode) => {
+        this.isLoading = false;
+        this.addressSearchCEP = data;
+      },
+      error: (error: HttpErrorResponse) => {
+        this.isLoading = false;
+        this.sweetalertService.getAlertByHttpErrorResponse(error, 'search_cep_not_found_title', 'search_cep_not_found_text');
+      }
+    });
   }
   
 }
