@@ -1,5 +1,4 @@
 import { Injectable, Renderer2, RendererFactory2 } from '@angular/core';
-import { postalCode } from '../models/postalCode';
 import { LanguageService } from './language.service';
 
 @Injectable({
