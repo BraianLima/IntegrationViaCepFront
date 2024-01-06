@@ -1,6 +1,6 @@
-import { Inject, Injectable, RendererFactory2 } from '@angular/core';
+import { Inject, Injectable, RendererFactory2, PLATFORM_ID } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { DOCUMENT } from '@angular/common';
+import { DOCUMENT, isPlatformBrowser  } from '@angular/common';
 import { CookieService } from 'ngx-cookie-service';
 import { isNullOrEmpty } from '../utils/string-utils';
 
@@ -8,13 +8,14 @@ import { isNullOrEmpty } from '../utils/string-utils';
   providedIn: 'root'
 })
 export class LanguageService {
-  private browserLanguage: string = navigator.language;
-  private cookieName = 'language';
-  private cookieExpirationHours: number = 1; 
-
+  
   constructor (private translateService: TranslateService, private rendererFactory: RendererFactory2,
     private cookieService: CookieService,
-    @Inject(DOCUMENT) private document: Document){ }
+    @Inject(DOCUMENT) private document: Document, @Inject(PLATFORM_ID) private platformId: Object){ }
+
+  private browserLanguage: string = (isPlatformBrowser(this.platformId) ? navigator.language : 'en');
+  private cookieName = 'language';
+  private cookieExpirationHours: number = 1; 
 
   public setUseLanguage(language: string): void {
     this.browserLanguage = this.getLanguage(language);
@@ -41,7 +42,7 @@ export class LanguageService {
       return storedLanguage;
     }
 
-    const userLang = navigator.language || 'en';
+    const userLang = (isPlatformBrowser(this.platformId) ? navigator.language : 'en');
     const browserLanguage = userLang.split('-')[0]
     return browserLanguage;
   }

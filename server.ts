@@ -12,11 +12,6 @@ export function app(): express.Express {
   const browserDistFolder = resolve(serverDistFolder, '../browser');
   const indexHtml = join(serverDistFolder, 'index.server.html');
 
-  const MockBrowser = require('mock-browser').mocks.MockBrowser;
-  const mock = new MockBrowser();
-  global['navigator'] = mock.getNavigator();
-
-
   const commonEngine = new CommonEngine();
 
   server.set('view engine', 'html');
