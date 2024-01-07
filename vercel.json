@@ -1,15 +1,3 @@
 {
-    "redirects": [
-        {
-            "source": "integration-via-cep/assets/:filePath",
-            "destination": "integration-via-cep/assets/:filePath",
-            "permanent": true
-        }
-    ],
-    "rewrites": [
-        { 
-            "source": "/(.*)",
-            "destination": "/index.html" 
-        }
-    ]
+    "cleanUrls": true
 }
