@@ -57,6 +57,7 @@ export class ContentComponent {
       },
       error: (error: HttpErrorResponse) => {
         this.isLoading = false;
+        this.address = new responseGetCEP;
         this.sweetalertService.getAlertByHttpErrorResponse(error, 'cep_not_found_title', 'cep_not_found_text');
       }
     });
@@ -72,6 +73,7 @@ export class ContentComponent {
       },
       error: (error: HttpErrorResponse) => {
         this.isLoading = false;
+        this.addressSearchCEP = new responseSearchPostalCode;
         this.sweetalertService.getAlertByHttpErrorResponse(error, 'search_cep_not_found_title', 'search_cep_not_found_text');
       }
     });

@@ -51,7 +51,7 @@
                     </div>
                 </div>
             </div>
-            <app-cep-output [address]="address" [isBlockSearchPostalCode]="isBlockSearchPostalCode" 
+            <app-cep-output *ngIf="address?.data" [address]="address" [isBlockSearchPostalCode]="isBlockSearchPostalCode" 
                 [ngClass]="{ 'd-none': isLoading }">
             </app-cep-output>
         </div>
