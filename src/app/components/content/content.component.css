@@ -42,3 +42,18 @@
 .font-size-20-rem-sync {
     font-size: 20rem;
 }
+
+.div-state-left {
+    padding-left: 0px !important;
+}
+
+.div-county-right {
+    padding-right: 0px !important;
+}
+
+@media (max-width: 767px) {
+    .div-state-left, .div-county-right {
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }
+}

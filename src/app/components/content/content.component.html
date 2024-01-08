@@ -60,7 +60,7 @@
             <div [ngClass]="{ 'd-none': isLoading }">
                 <form id="formSearchPostalCode" (ngSubmit)="searchPostalCode()">
                     <div class="row mb-3 mt-3 mx-0 p-0">
-                        <div class="col-12 col-md-6">
+                        <div class="col-12 col-md-6 div-state-left">
                             <div class="input-group mb-3">
                                 <p class="mb-0">
                                     <b>{{ "state" | translate }}</b>
@@ -72,7 +72,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12 col-md-6">
+                        <div class="col-12 col-md-6 div-county-right">
                             <div class="input-group mb-3">
                                 <p class="mb-0">
                                     <b>{{ "county" | translate }}</b>
