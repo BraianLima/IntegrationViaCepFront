@@ -13,6 +13,7 @@ export class CepOutputComponent implements OnInit, OnChanges  {
   @Input() isBlockSearchPostalCode: boolean = false; 
   @Input() postalCode: postalCode = new postalCode;
   public postalCodeClipboard: postalCode = new postalCode;
+  public fieldCopied: boolean = false;
   
   constructor(private  clipboardService: ClipboardService) {}
 
@@ -58,5 +59,10 @@ export class CepOutputComponent implements OnInit, OnChanges  {
     };
 
     this.clipboardService.copyVisibleFieldsOfAddressToClipboard(addressData);
+    this.fieldCopied = true;
+    setTimeout(() => {
+      this.fieldCopied = false;
+    }, 3000);
   }
+
 }

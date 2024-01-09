@@ -13,7 +13,8 @@
                             name="cepCode" disabled />
                         <div class="input-group-append">
                             <button type="button" class="btn btn-dark border-0" 
-                                (click)="copyToClipboardByService('cepCode', $event)">
+                                (click)="copyToClipboardByService('cepCode', $event)"
+                                [ngClass]="{ 'clipboard-green': fieldCopied }">
                                 <i class="material-icons v-middle">content_copy</i>
                             </button>
                         </div>
@@ -30,9 +31,11 @@
                             placeholder="{{ 'public_place' | translate }}" 
                             [(ngModel)]="postalCodeClipboard.publicPlace" 
                             [value]="postalCodeClipboard.publicPlace" 
-                            name="publicPlace" disabled />
+                            name="publicPlace" [ngClass]="{ 'is-valid': fieldCopied }" disabled />
                         <div class="input-group-append">
-                            <button type="button" class="btn btn-dark border-0" (click)="copyToClipboardByService('publicPlace', $event)">
+                            <button type="button" class="btn btn-dark border-0" 
+                                (click)="copyToClipboardByService('publicPlace', $event)" 
+                                [ngClass]="{ 'clipboard-green': fieldCopied }">
                                 <i class="material-icons v-middle">content_copy</i>
                             </button>
                         </div>
@@ -49,9 +52,11 @@
                             placeholder="{{ 'complement' | translate }}" 
                             [(ngModel)]="postalCodeClipboard.complement" 
                             [value]="postalCodeClipboard.complement" 
-                            name="complement" disabled />
+                            name="complement" [ngClass]="{ 'is-valid': fieldCopied }" disabled />
                         <div class="input-group-append">
-                            <button type="button" class="btn btn-dark border-0" (click)="copyToClipboardByService('complement', $event)">
+                            <button type="button" class="btn btn-dark border-0" 
+                                (click)="copyToClipboardByService('complement', $event)"
+                                [ngClass]="{ 'clipboard-green': fieldCopied }">
                                 <i class="material-icons v-middle">content_copy</i>
                             </button>
                         </div>
@@ -68,9 +73,11 @@
                             placeholder="{{ 'district' | translate }}" 
                             [(ngModel)]="postalCodeClipboard.district" 
                             [value]="postalCodeClipboard.district"
-                            name="district" disabled />
+                            name="district" [ngClass]="{ 'is-valid': fieldCopied }" disabled />
                         <div class="input-group-append">
-                            <button type="button" class="btn btn-dark border-0" (click)="copyToClipboardByService('district', $event)">
+                            <button type="button" class="btn btn-dark border-0" 
+                                (click)="copyToClipboardByService('district', $event)"
+                                [ngClass]="{ 'clipboard-green': fieldCopied }">
                                 <i class="material-icons v-middle">content_copy</i>
                             </button>
                         </div>
@@ -87,9 +94,11 @@
                             placeholder="{{ 'county' | translate }}" 
                             [(ngModel)]="postalCodeClipboard.county" 
                             [value]="postalCodeClipboard.county"
-                            name="county" disabled />
+                            name="county" [ngClass]="{ 'is-valid': fieldCopied }" disabled />
                         <div class="input-group-append">
-                            <button type="button" class="btn btn-dark border-0" (click)="copyToClipboardByService('county', $event)">
+                            <button type="button" class="btn btn-dark border-0" 
+                                (click)="copyToClipboardByService('county', $event)"
+                                [ngClass]="{ 'clipboard-green': fieldCopied }">
                                 <i class="material-icons v-middle">content_copy</i>
                             </button>
                         </div>
@@ -106,9 +115,11 @@
                             placeholder="{{ 'state' | translate }}" 
                             [(ngModel)]="postalCodeClipboard.state" 
                             [value]="postalCodeClipboard.state"
-                            name="state" disabled />
+                            name="state" [ngClass]="{ 'is-valid': fieldCopied }" disabled />
                         <div class="input-group-append">
-                            <button type="button" class="btn btn-dark border-0" (click)="copyToClipboardByService('state', $event)">
+                            <button type="button" class="btn btn-dark border-0" 
+                                (click)="copyToClipboardByService('state', $event)"
+                                [ngClass]="{ 'clipboard-green': fieldCopied }">
                                 <i class="material-icons v-middle">content_copy</i>
                             </button>
                         </div>
@@ -125,9 +136,11 @@
                             placeholder="{{ 'ibge_placeholder' | translate }}" 
                             [(ngModel)]="postalCodeClipboard.ibge" 
                             [value]="postalCodeClipboard.ibge"
-                            name="ibge" disabled />
+                            name="ibge" [ngClass]="{ 'is-valid': fieldCopied }" disabled />
                         <div class="input-group-append">
-                            <button type="button" class="btn btn-dark border-0" (click)="copyToClipboardByService('ibge', $event)">
+                            <button type="button" class="btn btn-dark border-0" 
+                                (click)="copyToClipboardByService('ibge', $event)"
+                                [ngClass]="{ 'clipboard-green': fieldCopied }">
                                 <i class="material-icons v-middle">content_copy</i>
                             </button>
                         </div>
@@ -144,9 +157,11 @@
                             placeholder="{{ 'gia_placeholder' | translate }}" 
                             [(ngModel)]="postalCodeClipboard.gia"
                             [value]="postalCodeClipboard.gia"
-                            name="gia" disabled />
+                            name="gia" [ngClass]="{ 'is-valid': fieldCopied }" disabled />
                         <div class="input-group-append">
-                            <button type="button" class="btn btn-dark border-0" (click)="copyToClipboardByService('gia', $event)">
+                            <button type="button" class="btn btn-dark border-0" 
+                                (click)="copyToClipboardByService('gia', $event)"
+                                [ngClass]="{ 'clipboard-green': fieldCopied }">
                                 <i class="material-icons v-middle">content_copy</i>
                             </button>
                         </div>
@@ -163,9 +178,11 @@
                             placeholder="{{ 'ddd_placeholder' | translate }}" 
                             [(ngModel)]="postalCodeClipboard.ddd"
                             [value]="postalCodeClipboard.ddd"
-                            name="ddd" disabled />
+                            name="ddd" [ngClass]="{ 'is-valid': fieldCopied }" disabled />
                         <div class="input-group-append">
-                            <button type="button" class="btn btn-dark border-0" (click)="copyToClipboardByService('ddd', $event)">
+                            <button type="button" class="btn btn-dark border-0" 
+                                (click)="copyToClipboardByService('ddd', $event)"
+                                [ngClass]="{ 'clipboard-green': fieldCopied }">
                                 <i class="material-icons v-middle">content_copy</i>
                             </button>
                         </div>
@@ -182,9 +199,11 @@
                             placeholder="{{ 'siafi_placeholder' | translate }}"
                             [(ngModel)]="postalCodeClipboard.siafi"
                             [value]="postalCodeClipboard.siafi"
-                            name="siafi" disabled />
+                            name="siafi" [ngClass]="{ 'is-valid': fieldCopied }" disabled />
                         <div class="input-group-append">
-                            <button type="button" class="btn btn-dark border-0" (click)="copyToClipboardByService('siafi', $event)">
+                            <button type="button" class="btn btn-dark border-0" 
+                                (click)="copyToClipboardByService('siafi', $event)"
+                                [ngClass]="{ 'clipboard-green': fieldCopied }">
                                 <i class="material-icons v-middle">content_copy</i>
                             </button>
                         </div>
