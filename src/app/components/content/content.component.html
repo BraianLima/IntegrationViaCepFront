@@ -109,7 +109,7 @@
                 <app-cep-output [postalCode]="postalCode" [isBlockSearchPostalCode]="isBlockSearchPostalCode"  
                     [ngClass]="{ 'd-none': isLoading }">
                 </app-cep-output>
-                <hr>
+                <hr [ngClass]="{ 'd-none': isLoading }">
             </div>
         </div>
 
