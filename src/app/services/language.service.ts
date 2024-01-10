@@ -2,7 +2,7 @@ import { Inject, Injectable, RendererFactory2, PLATFORM_ID } from '@angular/core
 import { TranslateService } from '@ngx-translate/core';
 import { DOCUMENT, isPlatformBrowser  } from '@angular/common';
 import { CookieService } from 'ngx-cookie-service';
-import { isNullOrEmpty } from '../utils/string-utils';
+import { isNullOrEmpty } from '../validators/string-utils';
 
 @Injectable({
   providedIn: 'root'

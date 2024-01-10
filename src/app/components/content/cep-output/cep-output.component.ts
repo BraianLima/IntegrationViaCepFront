@@ -59,6 +59,10 @@ export class CepOutputComponent implements OnInit, OnChanges  {
     };
 
     this.clipboardService.copyVisibleFieldsOfAddressToClipboard(addressData);
+    this.setFieldCopied();
+  }
+
+  private setFieldCopied(): void {
     this.fieldCopied = true;
     setTimeout(() => {
       this.fieldCopied = false;

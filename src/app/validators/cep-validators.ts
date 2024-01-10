@@ -1,4 +1,4 @@
-import { isNullOrEmpty } from '../utils/string-utils';
+import { isNullOrEmpty } from './string-utils';
 
 export function cepIsValid(cep: string): boolean {
     if (isNullOrEmpty(cep)) {

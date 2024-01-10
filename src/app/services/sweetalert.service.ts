@@ -11,26 +11,16 @@ export class SweetAlertService {
   constructor(private languageService: LanguageService) {}
 
     public getAlertByHttpErrorResponse(error: HttpErrorResponse, alertTitle: string, alertText: string): void {
-      if (error.status === 400){
-        Swal.fire({
-          icon: 'warning',
-          title: this.getTranslateMessages(alertTitle),
-          text: this.getTranslateMessages(alertText),
-        });
-        return;
-      }
-  
       Swal.fire({
-        icon: 'error',
+        icon: (error.status === 400) ? 'warning' : 'error',
         title: this.getTranslateMessages(alertTitle),
         text: this.getTranslateMessages(alertText),
       });
     }
 
     public getAlertByIcon(icon: string, alertTitle: string, alertText: string): void {
-      const iconSweetAlert: SweetAlertIcon = icon as SweetAlertIcon;
       Swal.fire({
-          icon: iconSweetAlert,
+          icon: icon as SweetAlertIcon,
           title: this.getTranslateMessages(alertTitle),
           text: this.getTranslateMessages(alertText),
       });

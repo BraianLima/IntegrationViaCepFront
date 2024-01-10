@@ -17,15 +17,19 @@ export class ClipboardService {
         if (inputElement) {
             const inputValue = inputElement.value;
             navigator.clipboard.writeText(inputValue);
-            this.renderer.addClass(inputElement, 'is-valid');
-            this.renderer.addClass(buttonElement, 'clipboard-green');
-            this.renderer.removeClass(buttonElement,'btn-dark');
-            setTimeout(() => {
-                this.renderer.removeClass(inputElement, 'is-valid');
-                this.renderer.addClass(buttonElement,'btn-dark');
-                this.renderer.removeClass(buttonElement, 'clipboard-green');
-            }, 3000);
+            this.setInputsAndButtonGreen(inputElement, buttonElement);
         }
+    }
+
+    private setInputsAndButtonGreen(inputElement: HTMLInputElement, buttonElement: HTMLButtonElement): void {
+        this.renderer.addClass(inputElement, 'is-valid');
+        this.renderer.addClass(buttonElement, 'clipboard-green');
+        this.renderer.removeClass(buttonElement,'btn-dark');
+        setTimeout(() => {
+            this.renderer.removeClass(inputElement, 'is-valid');
+            this.renderer.addClass(buttonElement,'btn-dark');
+            this.renderer.removeClass(buttonElement, 'clipboard-green');
+        }, 3000);
     }
 
     public copyVisibleFieldsOfAddressToClipboard(addressData: Record<string, string>): void {
