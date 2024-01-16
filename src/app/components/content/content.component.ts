@@ -6,6 +6,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { SweetAlertService } from '../../services/sweetalert.service';
 import { requestSearchPostalCode } from '../../models/requestSearchPostalCode';
 import { responseSearchPostalCode } from '../../models/responseSearchPostalCode';
+import { postalCode } from '../../models/postalCode';
  
 @Component({
   selector: 'app-content',
@@ -49,34 +50,65 @@ export class ContentComponent {
       return;
     }
     
-    this.isLoading = true;
+    this.setIsLoading(true);
     this.integrationViaCepService.getPostalCode(cepGetPostalCode).pipe().subscribe({
-      next: (data: responseGetCEP) => {
-        this.isLoading = false;
-        this.address = data;
+      next: (response: responseGetCEP) => {
+        this.setIsLoading(false);
+        if (!this.checkResponseGetCEPIsValid(response)) {
+          this.sweetalertService.getAlertByIcon('error', 'cep_not_found_title', 'cep_not_found_text');
+          return;
+        }
+        this.address = response;
       },
       error: (error: HttpErrorResponse) => {
-        this.isLoading = false;
-        this.address = new responseGetCEP;
+        this.setIsLoading(false);
         this.sweetalertService.getAlertByHttpErrorResponse(error, 'cep_not_found_title', 'cep_not_found_text');
       }
     });
 
   }
 
+  private checkResponseGetCEPIsValid(response: responseGetCEP): boolean {
+    if (!response.data) { 
+      return false;
+    }
+
+    return response.data?.isValid;
+  }
+
   public searchPostalCode(): void {
-    this.isLoading = true;
+    this.setIsLoading(true);
     this.integrationViaCepService.searchPostalCode(this.requestSearchCEP).pipe().subscribe({
-      next: (data: responseSearchPostalCode) => {
-        this.isLoading = false;
-        this.addressSearchCEP = data;
+      next: (response: responseSearchPostalCode) => {
+        this.setIsLoading(false);
+        response.data = this.getAddressValidOnlyInSearchPostalCode(response);
+        if (!this.checkResponseSearchPostalCodeIsValid(response)){
+          this.sweetalertService.getAlertByIcon('error', 'search_cep_not_found_title', 'search_cep_not_found_text');
+          return;
+        }
+        this.addressSearchCEP = response;
       },
       error: (error: HttpErrorResponse) => {
-        this.isLoading = false;
-        this.addressSearchCEP = new responseSearchPostalCode;
+        this.setIsLoading(false);
         this.sweetalertService.getAlertByHttpErrorResponse(error, 'search_cep_not_found_title', 'search_cep_not_found_text');
       }
     });
   }
+
+  private getAddressValidOnlyInSearchPostalCode(response: responseSearchPostalCode): postalCode[] | undefined {
+    if (response.data && Array.isArray(response.data)) {
+      return response.data.filter((postalCode) => postalCode.isValid === true);
+    }
+
+    return undefined;
+  }
   
+  private checkResponseSearchPostalCodeIsValid(response: responseSearchPostalCode): boolean {
+    return (response.data === undefined ? false : response.data.length > 0);
+  }
+
+  private setIsLoading(value: boolean): void {
+    this.isLoading = value;
+  }
+
 }
