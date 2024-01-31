@@ -14,7 +14,9 @@ export class HeaderComponent implements OnInit {
   constructor (private languageService: LanguageService){
   }
   
+  //set flags to show icon flags in page to translate page
   ngOnInit() {
+    //this.flags is used in header.component.html
     this.flags.push({
       flagIco: 'brazil.ico',
       flagTranslateName: 'brazil',
@@ -32,6 +34,7 @@ export class HeaderComponent implements OnInit {
     });
   }
 
+  //when changed language, reload page to setUseLanguage() to all fields in page
   public changeLanguage(event: Event, language: string): void {
     event.preventDefault();
     this.languageService.setUseLanguage(language);

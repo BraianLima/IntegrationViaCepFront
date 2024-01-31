@@ -21,30 +21,35 @@ export class CepOutputComponent implements OnInit, OnChanges  {
     this.initializePostalCodeClipboard();
   }
 
+  //if changes address on page, initialize page again
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['address']) {
       this.initializePostalCodeClipboard();
     }
   }
   
+  //initialize block component of output cep
   private initializePostalCodeClipboard(): void {
     if (this.isBlockSearchPostalCode) {
-      this.postalCodeClipboard = { ...this.postalCode };
+      this.postalCodeClipboard = this.postalCode;
       return;
     }
     
     if (!this.address.data) {
       this.address.data = new postalCode;
     }
-    this.postalCodeClipboard = { ...this.address.data };
+    this.postalCodeClipboard = this.address.data;
   }
 
+  //pass input id to change color to green and pass element, to get text do copy to clipboard
   public copyToClipboardByService(inputId: string, event: Event): void {
     const buttonElement = event.currentTarget as HTMLButtonElement;
+    //copy to clipboard
     this.clipboardService.copyToClipboard(inputId, buttonElement);
   }
 
   public copyAllAddressToClipboardByService(): void {
+    //get all fields when click on Copy to Clipboard button
     const addressData: Record<string, string> = {
       cep: (this.postalCodeClipboard.cepCode ?? ''),
       public_place: (this.postalCodeClipboard.publicPlace ?? ''),
@@ -58,8 +63,9 @@ export class CepOutputComponent implements OnInit, OnChanges  {
       siafi: (this.postalCodeClipboard.siafi ?? '')
     };
 
+    //pass all field to coyp to clipboard
     this.clipboardService.copyVisibleFieldsOfAddressToClipboard(addressData);
-    this.setFieldCopied();
+    this.setFieldCopied(); //set timeout to field back to original color
   }
 
   private setFieldCopied(): void {

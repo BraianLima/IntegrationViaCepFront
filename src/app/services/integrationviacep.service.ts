@@ -13,11 +13,13 @@ export class IntegrationViaCepService {
 
   constructor(private http: HttpClient) {}
 
+  //request to getPostalCode by integration-via-cep
   public getPostalCode(cepCode: string): Observable<responseGetCEP> {
     const url = `${this.baseUrl}/PostalCode/GetPostalCode?cepCode=${cepCode}`;
     return this.http.get<responseGetCEP>(url);
   }
 
+  //request to PostSearchPostalCode by integration-via-cep
   public searchPostalCode(requestSearchCEP: requestSearchPostalCode): Observable<responseSearchPostalCode> {
     const url = `${this.baseUrl}/PostalCode/PostSearchPostalCode`;
     return this.http.post<responseSearchPostalCode>(url, requestSearchCEP);
